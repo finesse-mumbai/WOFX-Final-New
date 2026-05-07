@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/src/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import { SplitText } from '../ui/SplitText';
 
 export function About() {
   return (
@@ -13,9 +14,11 @@ export function About() {
         
         {/* Top Section: Large Heading */}
         <div className="pt-24 h-[8rem] md:h-[18rem] px-6 md:px-20 flex justify-center items-start overflow-hidden border-b border-[#AAD24E]/30 relative">
-          <h2 className="text-[12rem] md:text-[24rem] font-black leading-[0.8] tracking-tighter bg-gradient-to-r from-brand-purple via-brand-magenta to-brand-purple bg-clip-text text-transparent select-none font-display translate-y-[-5%]">
-            About
-          </h2>
+          <SplitText
+            text="About"
+            className="text-[12rem] md:text-[24rem] font-black leading-[0.8] tracking-tighter select-none font-display translate-y-[-5%] justify-center"
+            gradient="linear-gradient(to right, var(--color-brand-purple), var(--color-brand-magenta), var(--color-brand-purple))"
+          />
           {/* Internal Markers */}
           <span className="absolute bottom-0 -left-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none">+</span>
           <span className="absolute bottom-0 -right-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none">+</span>

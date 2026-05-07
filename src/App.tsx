@@ -10,7 +10,8 @@ import { Advantage } from './components/sections/Advantage';
 import { Highlights } from './components/sections/Highlights';
 import { ExhibitorProfile } from './components/sections/Features';
 import { BrandConnect } from './components/sections/BrandConnect';
-import { RegistrationCTA, Partners } from './components/sections/Partners';
+import { RegistrationCTA } from './components/sections/Partners';
+import { IndustryPartners } from './components/sections/IndustryPartners';
 import { Testimonials, Footer } from './components/sections/Footer';
 import { Blogs } from './components/sections/Blogs';
 
@@ -37,7 +38,7 @@ export default function App() {
         <BrandConnect />
         <ExhibitorProfile />
         <RegistrationCTA />
-        <Partners />
+        <IndustryPartners />
         <Testimonials />
         <Blogs />
         <Footer />
