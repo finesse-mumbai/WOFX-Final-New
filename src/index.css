@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Sora", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-magenta: #C0426F;
+  --color-brand-purple: #653076;
+  --color-brand-lime: #AAD24E;
+  --color-brand-yellow: #FCF640;
+  --color-brand-light-lime: #AAD24E;
+  --color-brand-off-white: #FBFBFB;
+  --color-brand-gray: #EFEFEF;
+
+  --animate-float: float 3s ease-in-out infinite;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+:root {
+  background-color: var(--color-brand-off-white);
+  color: #1a1a1a;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
