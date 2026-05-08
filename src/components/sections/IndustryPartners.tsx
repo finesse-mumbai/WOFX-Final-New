@@ -21,20 +21,25 @@ const partners = [
 ];
 
 export function IndustryPartners() {
-  const titleWords = "Industry Bodies Endorsing WOFX".split(" ");
 
   return (
     <motion.section 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.1 }}
-      className="relative overflow-hidden h-screen w-full bg-white border-y border-zinc-100 flex items-center justify-center"
+      className="relative overflow-hidden h-screen w-full bg-[#FBFBFB] border-y border-zinc-100 flex items-center justify-center"
     >
       {/* Background Watermark for Premium Feel */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 opacity-[0.03] px-4">
-        <h2 className="text-[18vw] font-black tracking-tighter leading-[0.8] text-black whitespace-nowrap w-full flex flex-col">
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 px-4">
+        <h2 className="text-[18vw] font-black tracking-tighter leading-[0.8] text-[#EFEFEF] whitespace-nowrap w-full flex flex-col">
           <span className="block text-left">INDUSTRY</span>
           <span className="block text-right">BODIES</span>
+        </h2>
+      </div>
+      <div className="absolute bottom-[30%] left-12 z-20 max-w-2xl">
+        <h2 className="text-[45px] font-normal text-black leading-[1.1] tracking-tighter">
+          Industry Bodies <br />
+          Endorsing <span className="text-[#AAD24E] font-black">WOFX</span>
         </h2>
       </div>
 

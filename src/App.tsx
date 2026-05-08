@@ -12,14 +12,17 @@ import { ExhibitorProfile } from './components/sections/Features';
 import { BrandConnect } from './components/sections/BrandConnect';
 import { RegistrationCTA } from './components/sections/Partners';
 import { IndustryPartners } from './components/sections/IndustryPartners';
-import { Testimonials, Footer } from './components/sections/Footer';
+import { Testimonials } from './components/sections/Testimonials';
 import { Blogs } from './components/sections/Blogs';
+import { FeaturedBrands } from './components/sections/FeaturedBrands';
+import { Footer } from './components/sections/Footer';
 
 import { CustomCursor } from './components/layout/CustomCursor';
 import { MenuOverlay } from './components/layout/MenuOverlay';
 import { useState } from 'react';
 
 import { LatestUpdates } from './components/sections/LatestUpdates';
+import AdvancedScrollCarousel from './components/sections/AdvancedScrollCarousel';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,16 +34,18 @@ export default function App() {
       <main className="relative min-h-screen">
         <Hero onOpenMenu={() => setIsMenuOpen(true)} />
         <About />
-        
+
         <Advantage />
         <Highlights />
+        <AdvancedScrollCarousel />
         <LatestUpdates />
-        <BrandConnect />
+        <FeaturedBrands />
         <ExhibitorProfile />
         <RegistrationCTA />
         <IndustryPartners />
         <Testimonials />
         <Blogs />
+
         <Footer />
       </main>
     </SmoothScroll>

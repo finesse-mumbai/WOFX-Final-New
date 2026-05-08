@@ -24,54 +24,63 @@ const blogs = [
 
 export function Blogs() {
   return (
-    <section className="py-24 px-6 bg-brand-off-white font-sans">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
-          <div>
-            <h2 className="text-8xl md:text-9xl font-black text-black/5 leading-none absolute -translate-y-12 select-none pointer-events-none font-display">
-               Blogs
-            </h2>
-            <div className="relative pt-12">
-               <span className="text-brand-magenta font-bold uppercase tracking-widest text-sm">Insights</span>
-               <h3 className="text-5xl font-black tracking-tighter">Latest Updates</h3>
-            </div>
-          </div>
-          <button className="text-brand-purple font-black uppercase tracking-widest flex items-center space-x-2 group">
-             <span>View All News</span>
-             <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-          </button>
+    <section className=" bg-white font-sans overflow-hidden">
+      <div className="w-[90%] mx-auto border-x border-[#ABD14F] flex flex-col">
+        {/* Row 1: Massive Title */}
+        <div className="border-b border-t border-[#ABD14F] overflow-hidden text-center mt-28">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-[18vw] font-black text-black leading-none tracking-tighter select-none whitespace-nowrap"
+          >
+            Blogs
+          </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {blogs.map((blog, i) => (
-             <motion.article 
-               key={blog.title}
-               initial={{ opacity: 0, y: 30 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: i * 0.1 }}
-               className="group cursor-pointer"
-             >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-6 bg-zinc-200">
-                   <img 
-                     src={blog.image} 
-                     alt={blog.title} 
-                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                   />
-                   <div className="absolute top-4 left-4 bg-brand-yellow px-3 py-1 text-[10px] font-black uppercase tracking-widest text-black">
-                      {blog.tag}
-                   </div>
+        {/* Row 2: Blog Grid */}
+        <div className="px-10 py-28 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 p-4 border-l border-[#ABD14F]">
+            {blogs.map((blog, i) => (
+              <motion.article
+                key={blog.title}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className={`p-10 flex flex-col gap-8 items-start group cursor-pointer ${i !== 0 ? 'md:border-l' : ''} border-[#ABD14F] hover:bg-zinc-50 transition-colors duration-500`}
+              >
+                <motion.div
+                  initial={{ borderRadius: "100%" }}
+                  whileHover={{
+                    borderRadius: "0%",
+                    scale: 1.05
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.76, 0, 0.24, 1]
+                  }}
+                  className="flex-shrink-0 w-[100px] h-[100px] overflow-hidden border border-[#ABD14F]/20 bg-zinc-100"
+                >
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
+
+                <div className="flex flex-col items-start text-left">
+                  <h4 className="text-xl font-black leading-tight group-hover:text-brand-magenta transition-colors line-clamp-3 mb-6">
+                    {blog.title}
+                  </h4>
+
+                  <button className="bg-[#ABD14F] text-black px-6 py-2 text-xs font-black tracking-widest capitalize hover:bg-black hover:text-[#ABD14F] transition-all duration-300">
+                    Read Full
+                  </button>
                 </div>
-                <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2">{blog.date}</p>
-                <h4 className="text-2xl font-black leading-tight group-hover:text-brand-magenta transition-colors line-clamp-2">
-                   {blog.title}
-                </h4>
-                <div className="mt-6 flex items-center font-black text-xs uppercase tracking-widest space-x-2 border-b-2 border-transparent group-hover:border-brand-magenta w-fit transition-all pb-1">
-                   <span>Read More</span>
-                   <ArrowRight size={14} />
-                </div>
-             </motion.article>
-          ))}
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

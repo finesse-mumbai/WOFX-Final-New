@@ -1,5 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { Target, Users, Share2, Link, Award, Globe } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
   // Inner Orbit (3 items)
@@ -17,14 +21,17 @@ export function ExhibitorProfile() {
   const [innerRadius, setInnerRadius] = useState(0);
   const [outerRadius, setOuterRadius] = useState(0);
   const orbitRef = useRef<HTMLDivElement>(null);
+  const zoomCircleRef = useRef<HTMLDivElement>(null);
+  const zoomContentRef = useRef<HTMLSpanElement>(null);
+  const zoomContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = orbitRef.current;
     if (!el) return;
     const update = () => {
       const size = el.getBoundingClientRect().width;
-      setInnerRadius(size * 0.36);  // ~36% of container = inner orbit
-      setOuterRadius(size * 0.46);  // ~46% of container = outer orbit
+      setInnerRadius(size * 0.392);  // Matched to middle decorative circle
+      setOuterRadius(size * 0.481);  // Matched to outer decorative circle
     };
     update();
     const ro = new ResizeObserver(update);
@@ -32,47 +39,97 @@ export function ExhibitorProfile() {
     return () => ro.disconnect();
   }, []);
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // Scroll Reveal Animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: zoomContainerRef.current,
+          start: 'top top',
+          end: '+=150%',
+          scrub: 1,
+          pin: true,
+        }
+      });
+
+      tl.to(zoomCircleRef.current, {
+        scale: 60,
+        duration: 1,
+        ease: "none"
+      }, 0)
+        .to(".group-reveal", {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out"
+        }, 0.15);
+
+      // Continuous Solar System Rotation
+      gsap.to(".inner-orbit-container", {
+        rotation: 360,
+        duration: 25,
+        repeat: -1,
+        ease: "none"
+      });
+      gsap.to(".inner-orbit-item", {
+        rotation: -360,
+        duration: 25,
+        repeat: -1,
+        ease: "none"
+      });
+
+      gsap.to(".outer-orbit-container", {
+        rotation: -360,
+        duration: 40,
+        repeat: -1,
+        ease: "none"
+      });
+      gsap.to(".outer-orbit-item", {
+        rotation: 360,
+        duration: 40,
+        repeat: -1,
+        ease: "none"
+      });
+
+    }, zoomContainerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const innerItems = categories.slice(0, 3);
   const outerItems = categories.slice(3);
 
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <p className="text-brand-magenta font-bold uppercase tracking-widest text-sm mb-4">Exhibitor Profile</p>
+    <section ref={zoomContainerRef} className=" bg-black overflow-hidden relative">
+      <div className="w-[90%] mx-auto border-x border-[#ABD14F]/30 relative flex flex-col items-center min-h-screen">
 
-          <div ref={orbitRef} className="relative w-full max-w-[1248px] aspect-square flex items-center justify-center">
-            {/* Inner Circle */}
-            <div className="absolute w-[474px] h-[474px] md:w-[648px] md:h-[648px] bg-white rounded-full flex flex-col items-center justify-center text-center p-10 md:p-16 z-10 border border-[#A9D24E]">
-              <span className="flex flex-col items-center gap-2">
-                <span className="text-lg md:text-xl">
-                  <span className="font-black text-[#AAD24E]">Exhibitor</span>{' '}
-                  <span className="font-normal text-black">Profile</span>
-                </span>
-                <span className="font-black text-3xl md:text-5xl lg:text-6xl leading-tight text-black">
-                  An Industry Trade Show For All Furniture Categories
-                </span>
-              </span>
-            </div>
+        <div ref={orbitRef} className="relative w-full max-w-[1248px] aspect-square flex items-center justify-center">
+          {/* Inner Circle (Zoom Reveal) */}
+          <div
+            ref={zoomCircleRef}
+            className="absolute w-20 h-20 bg-white rounded-full z-10 border border-white mix-blend-difference origin-center"
+          />
 
-            {/* Decorative Circles */}
-            <div className="absolute w-[628px] h-[628px] md:w-[900px] md:h-[900px] border border-[#A9D24E]/30 rounded-full" />
-            <div className="absolute w-[781px] h-[781px] md:w-[1152px] md:h-[1152px] border border-[#A9D24E]/20 rounded-full" />
+          {/* Decorative Circles */}
+          <div className="absolute w-[534px] h-[534px] md:w-[765px] md:h-[765px] border border-[#A9D24E]/30 rounded-full" />
+          <div className="absolute w-[664px] h-[664px] md:w-[980px] md:h-[980px] border border-[#A9D24E]/20 rounded-full" />
+          <div className="absolute w-[794px] h-[794px] md:w-[1200px] md:h-[1200px] border border-[#A9D24E]/10 rounded-full" />
 
-            {/* Orbiting Items - Inner Orbit (3 items) - Now Static */}
+          {/* Inner Orbit Container */}
+          <div className="inner-orbit-container absolute inset-0 flex items-center justify-center pointer-events-none z-20 opacity-0 group-reveal">
             {innerItems.map((cat, i) => {
               const angle = i * (360 / innerItems.length) * (Math.PI / 180);
               const x = Math.cos(angle) * innerRadius;
               const y = Math.sin(angle) * innerRadius;
-              
+
               return (
-                <div 
-                  key={cat.name} 
-                  className="absolute flex flex-col items-center group cursor-pointer"
+                <div
+                  key={cat.name}
+                  className="inner-orbit-item absolute flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
                   style={{
                     transform: `translate(${x}px, ${y}px)`
                   }}
                 >
-                  <div className="w-20 h-20 md:w-28 md:h-28 bg-zinc-100 p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border border-[#A9D24E]">
+                  <div className="w-24 h-24 md:w-[134px] md:h-[134px] bg-white p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border-b-2 border-[#A9D24E] shadow-2xl">
                     <img src={cat.image} alt={cat.name} className="max-h-full object-contain" />
                   </div>
                   <div className="mt-4 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
@@ -81,22 +138,24 @@ export function ExhibitorProfile() {
                 </div>
               );
             })}
+          </div>
 
-            {/* Orbiting Items - Outer Orbit (4 items) - Now Static */}
+          {/* Outer Orbit Container */}
+          <div className="outer-orbit-container absolute inset-0 flex items-center justify-center pointer-events-none z-20 opacity-0 group-reveal">
             {outerItems.map((cat, i) => {
               const angle = i * (360 / outerItems.length) * (Math.PI / 180);
               const x = Math.cos(angle) * outerRadius;
               const y = Math.sin(angle) * outerRadius;
 
               return (
-                <div 
-                  key={cat.name} 
-                  className="absolute flex flex-col items-center group cursor-pointer"
+                <div
+                  key={cat.name}
+                  className="outer-orbit-item absolute flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
                   style={{
                     transform: `translate(${x}px, ${y}px)`
                   }}
                 >
-                  <div className="w-20 h-20 md:w-28 md:h-28 bg-zinc-100 p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border border-[#A9D24E]">
+                  <div className="w-24 h-24 md:w-[134px] md:h-[134px] bg-white p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border-b-2 border-[#A9D24E] shadow-2xl">
                     <img src={cat.image} alt={cat.name} className="max-h-full object-contain" />
                   </div>
                   <div className="mt-4 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
@@ -107,6 +166,25 @@ export function ExhibitorProfile() {
             })}
           </div>
         </div>
+      </div>
+
+      {/* Global Text Overlay (Outside relative containers to ensure perfect centering and pinning) */}
+      <div className="absolute inset-0 z-[100] flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="text-center px-6 max-w-4xl">
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-lg md:text-3xl  opacity-0 group-reveal relative">
+              <span className="font-semibold text-[#AAD24E]">Exhibitor</span> Profile
+            </div>
+            <h3
+              ref={zoomContentRef}
+              className="font-black text-3xl md:text-7xl leading-tight text-black origin-center block p-4 mix-blend-difference"
+              style={{ willChange: 'transform' }}
+            >
+              An Industry <br />  Trade  Show For <br /> All  Furniture <br /> Categories
+            </h3>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
