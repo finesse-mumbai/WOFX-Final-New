@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 
 function Digit({ value, delay }: { value: string; delay: number }) {
   const isNumber = !isNaN(parseInt(value));
@@ -55,21 +55,36 @@ const stats = [
 ];
 
 export function Highlights() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"]
+  });
+
+  const titleY = useTransform(scrollYProgress, [0, 0.8], ["-120%", "0%"]);
+  const smoothTitleY = useSpring(titleY, { stiffness: 60, damping: 20, mass: 0.4 });
+
   return (
-    <section className="bg-black relative ">
+    <section ref={sectionRef} className="bg-black relative ">
       {/* Top Black Section with 2025 */}
       <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative z-20 ">
         <div className="relative h-[165px] md:h-[255px] flex items-center justify-center">
           <div className="flex mt-20 pt-12">
             <div className="h-[165px] md:h-[255px] overflow-hidden">
-              <h2 className="text-[12rem] md:text-[24rem] font-black text-white leading-none tracking-tighter select-none ">
+              <motion.h2
+                style={{ y: smoothTitleY }}
+                className="text-[12rem] md:text-[24rem] font-black text-white leading-none tracking-tighter select-none "
+              >
                 20
-              </h2>
+              </motion.h2>
             </div>
             <div>
-              <h2 className="text-[12rem] md:text-[24rem] font-black text-white leading-none tracking-tighter select-none">
+              <motion.h2
+                style={{ y: smoothTitleY }}
+                className="text-[12rem] md:text-[24rem] font-black text-white leading-none tracking-tighter select-none"
+              >
                 25
-              </h2>
+              </motion.h2>
             </div>
           </div>
         </div>

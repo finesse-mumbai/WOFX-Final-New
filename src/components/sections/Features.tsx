@@ -30,8 +30,33 @@ export function ExhibitorProfile() {
     if (!el) return;
     const update = () => {
       const size = el.getBoundingClientRect().width;
-      setInnerRadius(size * 0.392);  // Matched to middle decorative circle
-      setOuterRadius(size * 0.481);  // Matched to outer decorative circle
+      const newInner = size * 0.392;
+      const newOuter = size * 0.481;
+      setInnerRadius(newInner);
+      setOuterRadius(newOuter);
+
+      // Update positions via GSAP to avoid transform conflicts with React
+      const innerItems = el.querySelectorAll('.inner-orbit-item');
+      innerItems.forEach((item, i) => {
+        const angle = i * (360 / innerItems.length) * (Math.PI / 180);
+        gsap.set(item, {
+          x: Math.cos(angle) * newInner,
+          y: Math.sin(angle) * newInner,
+          xPercent: -50,
+          yPercent: -50
+        });
+      });
+
+      const outerItems = el.querySelectorAll('.outer-orbit-item');
+      outerItems.forEach((item, i) => {
+        const angle = i * (360 / outerItems.length) * (Math.PI / 180);
+        gsap.set(item, {
+          x: Math.cos(angle) * newOuter,
+          y: Math.sin(angle) * newOuter,
+          xPercent: -50,
+          yPercent: -50
+        });
+      });
     };
     update();
     const ro = new ResizeObserver(update);
@@ -71,26 +96,26 @@ export function ExhibitorProfile() {
       // Continuous Solar System Rotation
       gsap.to(".inner-orbit-container", {
         rotation: 360,
-        duration: 25,
+        duration: 20,
         repeat: -1,
         ease: "none"
       });
       gsap.to(".inner-orbit-item", {
         rotation: -360,
-        duration: 25,
+        duration: 20,
         repeat: -1,
         ease: "none"
       });
 
       gsap.to(".outer-orbit-container", {
         rotation: -360,
-        duration: 40,
+        duration: 30,
         repeat: -1,
         ease: "none"
       });
       gsap.to(".outer-orbit-item", {
         rotation: 360,
-        duration: 40,
+        duration: 30,
         repeat: -1,
         ease: "none"
       });
@@ -134,10 +159,7 @@ export function ExhibitorProfile() {
               return (
                 <div
                   key={cat.name}
-                  className="inner-orbit-item absolute flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
-                  style={{
-                    transform: `translate(${x}px, ${y}px)`
-                  }}
+                  className="inner-orbit-item absolute left-1/2 top-1/2 flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
                 >
                   <div className="w-24 h-24 md:w-[134px] md:h-[134px] bg-white p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border-b-2 border-[#A9D24E] shadow-2xl">
                     <img src={cat.image} alt={cat.name} className="max-h-full object-contain" />
@@ -160,10 +182,7 @@ export function ExhibitorProfile() {
               return (
                 <div
                   key={cat.name}
-                  className="outer-orbit-item absolute flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
-                  style={{
-                    transform: `translate(${x}px, ${y}px)`
-                  }}
+                  className="outer-orbit-item absolute left-1/2 top-1/2 flex flex-col items-center group cursor-pointer z-50 pointer-events-auto"
                 >
                   <div className="w-24 h-24 md:w-[134px] md:h-[134px] bg-white p-4 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 border-b-2 border-[#A9D24E] shadow-2xl">
                     <img src={cat.image} alt={cat.name} className="max-h-full object-contain" />

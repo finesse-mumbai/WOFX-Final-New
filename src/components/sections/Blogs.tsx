@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+
 
 const blogs = [
   {

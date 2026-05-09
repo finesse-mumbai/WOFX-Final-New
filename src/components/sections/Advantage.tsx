@@ -226,7 +226,7 @@ const advantages = [
 
 export function Advantage() {
   return (
-    <section className="bg-white text-zinc-900 relative overflow-hidden">
+    <section className="bg-white text-zinc-900 relative overflow-hidden z-40">
       <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
@@ -289,7 +289,7 @@ function Card({ item, idx }: { item: any; idx: number }) {
       viewport={{ once: true }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative border p-10 flex flex-col items-start overflow-hidden h-44 cursor-pointer transition-colors duration-500"
+      className="group relative border p-10 z-40 flex flex-col items-start overflow-hidden h-44 cursor-pointer transition-colors duration-500"
       style={{ borderColor: isHovered ? 'transparent' : '#AAD24E' }}
     >
       {/* Base Background (Always visible at bottom) */}
