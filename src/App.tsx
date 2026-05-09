@@ -59,38 +59,17 @@ export default function App() {
 }
 
 function HeroAboutReveal({ onOpenMenu }: { onOpenMenu: () => void }) {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  // Parallax Y for the Hero (moves up slightly as you scroll)
-  const heroYTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const heroOpacityTransform = useTransform(scrollYProgress, [0.3, 0.8], [1, 0]);
-  
-  // Smoothing the values
-  const heroY = useSpring(heroYTransform, { stiffness: 100, damping: 30, mass: 1 });
-  const heroOpacity = useSpring(heroOpacityTransform, { stiffness: 100, damping: 30, mass: 1 });
-
   return (
-    <div ref={containerRef} className="relative w-full">
-      {/* Background: Sticky Hero */}
-      <div className="sticky top-0 z-0 h-screen w-full overflow-hidden bg-zinc-900">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="h-full w-full">
-          <Hero onOpenMenu={onOpenMenu} />
-        </motion.div>
+    <div className="relative w-full">
+      {/* Pinned Layer: Sticky Hero */}
+      <div className="sticky top-0 left-0 z-0 h-screen w-full bg-zinc-900">
+        <Hero onOpenMenu={onOpenMenu} />
       </div>
 
-      {/* Foreground: About sliding over */}
-      <div className="relative z-10 -mt-[100vh] flex flex-col">
-        {/* Transparent Spacer */}
-        <div className="h-screen w-full pointer-events-none" />
-        
-        {/* About Section */}
-        <div className="bg-brand-off-white shadow-[0_-50px_100px_rgba(0,0,0,0.2),0_-20px_40px_rgba(0,0,0,0.1)] relative">
-          <About />
-        </div>
+      {/* Sliding Layer: About Section */}
+      {/* We ensure this section has its own background to cover the Hero */}
+      <div className="relative z-10 bg-brand-off-white shadow-[0_-100px_100px_rgba(0,0,0,0.2)]">
+        <About />
       </div>
     </div>
   );

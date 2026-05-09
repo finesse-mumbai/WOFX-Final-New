@@ -1,24 +1,40 @@
-import { motion } from 'motion/react';
+import React from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { cn } from '@/src/lib/utils';
 import { ArrowRight } from 'lucide-react';
-import { SplitText } from '../ui/SplitText';
 
 export function About() {
+  const sectionRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"]
+  });
+
+  const titleY = useTransform(scrollYProgress, [0, 0.8], ["-120%", "0%"]);
+  const smoothTitleY = useSpring(titleY, { stiffness: 60, damping: 20, mass: 0.4 });
+
   return (
-    <section className="bg-brand-off-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
+    <section ref={sectionRef} className="bg-brand-off-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
       <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
         <span className="absolute -top-3 -right-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
         
-        {/* Top Section: Large Heading */}
-        <div className="pt-24 h-[8rem] md:h-[18rem] px-6 md:px-20 flex justify-center items-start overflow-hidden border-b border-[#AAD24E]/30 relative">
-          <SplitText
-            text="About"
-            className="text-[12rem] md:text-[24rem] font-black leading-[0.8] tracking-tighter select-none font-display translate-y-[-5%] justify-center"
-            gradient="linear-gradient(to right, var(--color-brand-purple), var(--color-brand-magenta), var(--color-brand-purple))"
-          />
+        {/* Top Section: Large Heading (Blogs-style animation with Brand Gradient) */}
+        {/* Reduced top/bottom padding by 50% and added clipping height to hide bottom 20% of font */}
+        <div className="border-b border-[#AAD24E]/30 overflow-hidden text-center pt-12 pb-2 h-[14vw] relative">
+          <motion.h2
+            style={{ 
+              y: smoothTitleY,
+              backgroundImage: 'linear-gradient(to right, var(--color-brand-purple), var(--color-brand-magenta), var(--color-brand-purple))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+            className="text-[18vw] font-black leading-[0.8] tracking-tighter select-none whitespace-nowrap translate-y-[5%]"
+          >
+            About
+          </motion.h2>
           {/* Internal Markers */}
           <span className="absolute bottom-0 -left-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none">+</span>
           <span className="absolute bottom-0 -right-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none">+</span>
