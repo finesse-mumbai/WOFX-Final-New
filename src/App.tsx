@@ -19,7 +19,8 @@ import { Footer } from './components/sections/Footer';
 
 import { CustomCursor } from './components/layout/CustomCursor';
 import { MenuOverlay } from './components/layout/MenuOverlay';
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 import { LatestUpdates } from './components/sections/LatestUpdates';
 import AdvancedScrollCarousel from './components/sections/AdvancedScrollCarousel';
@@ -37,17 +38,53 @@ export default function App() {
 
         <Advantage />
         <Highlights />
-        <AdvancedScrollCarousel />
         <LatestUpdates />
+        <AdvancedScrollCarousel />
+
         <FeaturedBrands />
         <ExhibitorProfile />
         <RegistrationCTA />
-        <IndustryPartners />
-        <Testimonials />
-        <Blogs />
+
+        {/* Stacking Sections: IndustryPartners freezes, Testimonials slides over */}
+        <StackingReveal />
+
+        <div className="relative z-30 bg-white">
+          <Blogs />
+        </div>
 
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+function StackingReveal() {
+  const containerRef = useRef(null);
+
+  // Track scroll relative to the container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Background parallax and scale
+  const bgScale = useTransform(scrollYProgress, [0.3, 0.6], [1, 0.9]);
+  const bgOpacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      {/* Background Section (Sticky) */}
+      <motion.div
+        style={{ scale: bgScale, opacity: bgOpacity }}
+        className="sticky top-0 z-0 h-screen overflow-hidden"
+      >
+        <IndustryPartners />
+      </motion.div>
+
+      {/* Foreground Section (Natural Flow - Slides over sticky background) */}
+      <div className="relative z-10 bg-white shadow-[0_-50px_100px_rgba(0,0,0,0.1)]">
+        <Testimonials />
+      </div>
+    </div>
   );
 }

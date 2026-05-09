@@ -77,39 +77,25 @@ export function Testimonials() {
                   hover: { 
                     borderRadius: "100%", 
                     backgroundColor: "#000",
-                    transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+                    scale: 1,
+                    transition: { duration: 2.5, ease: [0.76, 0, 0.24, 1] }
                   }
                 }}
                 className="relative w-full h-full border border-white/10 flex flex-col items-center justify-center text-center p-6 cursor-pointer text-white overflow-hidden z-10"
               >
-                {/* Icon Layer */}
-                <motion.div 
-                  variants={{
-                    initial: { y: 0, x: 0, scale: 1 },
-                    hover: { 
-                      y: -10, 
-                      x: 10, 
-                      scale: 1.2,
-                      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
-                    }
-                  }}
-                  className="relative w-16 h-16 rounded-full border border-white/20 flex items-center justify-center mb-4 z-10 transition-colors duration-700 group-hover:border-[#ABD14F]/20"
-                >
-                  <ArrowUpRight size={28} className="transition-colors duration-500 group-hover:text-[#ABD14F]" />
-                </motion.div>
-
                 {/* Text Layer */}
                 <motion.span 
                   variants={{
-                    initial: { y: 0 },
+                    initial: { y: 0, scale: 1 },
                     hover: { 
-                      y: -5,
+                      y: 0,
+                      scale: 1.5,
                       transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
                     }
                   }}
-                  className="relative text-2xl font-black uppercase tracking-tighter leading-tight z-10 transition-colors duration-700 group-hover:text-[#ABD14F]"
+                  className="relative text-3xl font-black uppercase tracking-tighter leading-tight z-10 transition-colors duration-700 group-hover:text-[#ABD14F]"
                 >
-                  Read <br /> All Reviews
+                  More
                 </motion.span>
 
                 {/* Outer Border Morph */}
@@ -119,8 +105,8 @@ export function Testimonials() {
                     hover: { 
                       borderRadius: "100%",
                       borderColor: "#000",
-                      scale: 1.05,
-                      transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+                      scale: 1,
+                      transition: { duration: 2.5, ease: [0.76, 0, 0.24, 1] }
                     }
                   }}
                   className="absolute inset-0 border pointer-events-none z-20"
@@ -156,7 +142,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
               scale: 1, 
               rotate: 0,
               transition: { 
-                duration: 0.8, 
+                duration: 0.6, 
                 ease: [0.16, 1, 0.3, 1] 
               }
             }
@@ -170,14 +156,25 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         </motion.div>
 
         <div className="absolute inset-0 overflow-hidden bg-zinc-50">
-          {/* Initial Image */}
-          <div className="absolute inset-0 z-0">
-            <img 
+          {/* Initial Image with Reveal Animation */}
+          {/* Unified Clip-Path Reveal Animation */}
+          <motion.div 
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 2.2, ease: [0.76, 0, 0.24, 1] }}
+            className="absolute inset-0 z-0 overflow-hidden"
+          >
+            <motion.img 
+              initial={{ y: -30, scale: 1.1, filter: "blur(10px)" }}
+              whileInView={{ y: 0, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 2.4, ease: [0.76, 0, 0.24, 1] }}
               src={testimonial.image} 
               alt={testimonial.name} 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
-          </div>
+          </motion.div>
 
           {/* Hover View (Green Background) */}
           <motion.div 

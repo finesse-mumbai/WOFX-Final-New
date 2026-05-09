@@ -61,6 +61,11 @@ export function ExhibitorProfile() {
           opacity: 1,
           duration: 0.8,
           ease: "power2.out"
+        }, 0.15)
+        .to(zoomContentRef.current, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out"
         }, 0.15);
 
       // Continuous Solar System Rotation
@@ -99,20 +104,25 @@ export function ExhibitorProfile() {
   const outerItems = categories.slice(3);
 
   return (
-    <section ref={zoomContainerRef} className=" bg-black overflow-hidden relative">
-      <div className="w-[90%] mx-auto border-x border-[#ABD14F]/30 relative flex flex-col items-center min-h-screen">
+    <section ref={zoomContainerRef} className=" bg-[#AAD24E] overflow-hidden relative">
+      {/* Persistent Side Borders Overlay */}
+      <div className="absolute inset-0 z-[90] pointer-events-none">
+        <div className="w-[90%] h-full mx-auto border-x border-black/20" />
+      </div>
+
+      <div className="w-[90%] mx-auto relative flex flex-col items-center min-h-screen">
 
         <div ref={orbitRef} className="relative w-full max-w-[1248px] aspect-square flex items-center justify-center">
           {/* Inner Circle (Zoom Reveal) */}
           <div
             ref={zoomCircleRef}
-            className="absolute w-20 h-20 bg-white rounded-full z-10 border border-white mix-blend-difference origin-center"
+            className="absolute w-20 h-20 bg-white rounded-full z-0 border border-black/10 origin-center shadow-lg"
           />
 
           {/* Decorative Circles */}
-          <div className="absolute w-[534px] h-[534px] md:w-[765px] md:h-[765px] border border-[#A9D24E]/30 rounded-full" />
-          <div className="absolute w-[664px] h-[664px] md:w-[980px] md:h-[980px] border border-[#A9D24E]/20 rounded-full" />
-          <div className="absolute w-[794px] h-[794px] md:w-[1200px] md:h-[1200px] border border-[#A9D24E]/10 rounded-full" />
+          <div className="absolute w-[534px] h-[534px] md:w-[765px] md:h-[765px] border border-black/20 rounded-full z-10" />
+          <div className="absolute w-[664px] h-[664px] md:w-[980px] md:h-[980px] border border-black/20 rounded-full z-10" />
+          <div className="absolute w-[794px] h-[794px] md:w-[1200px] md:h-[1200px] border border-black/20 rounded-full z-10" />
 
           {/* Inner Orbit Container */}
           <div className="inner-orbit-container absolute inset-0 flex items-center justify-center pointer-events-none z-20 opacity-0 group-reveal">
@@ -172,13 +182,13 @@ export function ExhibitorProfile() {
       <div className="absolute inset-0 z-[100] flex items-center justify-center pointer-events-none overflow-hidden">
         <div className="text-center px-6 max-w-4xl">
           <div className="flex flex-col items-center gap-2">
-            <div className="text-lg md:text-3xl  opacity-0 group-reveal relative">
+            <div className="text-lg md:text-3xl opacity-0 group-reveal relative">
               <span className="font-semibold text-[#AAD24E]">Exhibitor</span> Profile
             </div>
             <h3
               ref={zoomContentRef}
-              className="font-black text-3xl md:text-7xl leading-tight text-black origin-center block p-4 mix-blend-difference"
-              style={{ willChange: 'transform' }}
+              className="font-black text-3xl md:text-7xl leading-tight text-black origin-center block p-4"
+              style={{ opacity: 0, willChange: 'transform' }}
             >
               An Industry <br />  Trade  Show For <br /> All  Furniture <br /> Categories
             </h3>

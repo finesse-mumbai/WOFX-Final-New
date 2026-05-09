@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import React from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const blogs = [
@@ -23,15 +24,22 @@ const blogs = [
 ];
 
 export function Blogs() {
+  const sectionRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"]
+  });
+
+  const titleY = useTransform(scrollYProgress, [0, 1], ["-120%", "0%"]);
+  const smoothTitleY = useSpring(titleY, { stiffness: 40, damping: 25, mass: 0.5 });
+
   return (
-    <section className=" bg-white font-sans overflow-hidden">
+    <section ref={sectionRef} className=" bg-white font-sans overflow-hidden">
       <div className="w-[90%] mx-auto border-x border-[#ABD14F] flex flex-col">
         {/* Row 1: Massive Title */}
         <div className="border-b border-t border-[#ABD14F] overflow-hidden text-center mt-28">
           <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            style={{ y: smoothTitleY }}
             className="text-[18vw] font-black text-black leading-none tracking-tighter select-none whitespace-nowrap"
           >
             Blogs
