@@ -30,8 +30,8 @@ export function Blogs() {
     offset: ["start end", "center center"]
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 1], ["-120%", "0%"]);
-  const smoothTitleY = useSpring(titleY, { stiffness: 40, damping: 25, mass: 0.5 });
+  const titleY = useTransform(scrollYProgress, [0, 0.8], ["-120%", "0%"]);
+  const smoothTitleY = useSpring(titleY, { stiffness: 60, damping: 20, mass: 0.4 });
 
   return (
     <section ref={sectionRef} className=" bg-white font-sans overflow-hidden">
