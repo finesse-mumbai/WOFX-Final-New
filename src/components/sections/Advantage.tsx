@@ -227,7 +227,7 @@ const advantages = [
 export function Advantage() {
   return (
     <section className="bg-white text-zinc-900 relative overflow-hidden z-40">
-      <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
         <span className="absolute -top-3 -right-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
@@ -255,12 +255,12 @@ export function Advantage() {
           </div>
 
           {/* Column 2: Spacer (w-14) */}
-          <div className="hidden md:block w-14 flex-shrink-0 border-r border-[#AAD24E]/30 h-auto relative bg-zinc-50">
+          <div className="hidden md:block w-14 flex-shrink-0 border-r border-[#AAD24E]/30 h-auto relative bg-white">
             <span className="absolute bottom-0 -right-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none">+</span>
           </div>
 
           {/* Column 3: Main Content (Remaining) */}
-          <div className="flex-1 py-12 px-2 md:px-4 relative bg-zinc-50/30">
+          <div className="flex-1 py-12 px-2 md:px-4 relative bg-white">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {advantages.map((item, idx) => (
                 <Card key={idx} item={item} idx={idx} />
@@ -293,7 +293,7 @@ function Card({ item, idx }: { item: any; idx: number }) {
       style={{ borderColor: isHovered ? 'transparent' : '#AAD24E' }}
     >
       {/* Base Background (Always visible at bottom) */}
-      <div className="absolute inset-0 bg-[#F8F9FA] z-0" />
+      <div className="absolute inset-0 bg-white z-0" />
 
       {/* --- LAYER 1: Bottom Content (Black Text on White) --- */}
       <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">

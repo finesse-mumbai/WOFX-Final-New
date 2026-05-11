@@ -48,12 +48,12 @@ const AdvancedScrollCarousel: React.FC = () => {
 
       // CHAIN LOGIC (Left Shrinks, Right Grows)
       gsap.set(imgWrappers, { width: "0%", opacity: 0 });
-      gsap.set(imgWrappers[0], { width: "90%", opacity: 1 });
+      gsap.set(imgWrappers[0], { width: "95%", opacity: 1 });
       gsap.set(imgWrappers[1], { width: "10%", opacity: 1 });
 
       for (let i = 0; i < images.length - 1; i++) {
         tl.to(imgWrappers[i], { width: "10%", duration: 3, ease: "power2.inOut" })
-          .to(imgWrappers[i + 1], { width: "90%", duration: 3, ease: "power2.inOut" }, "<")
+          .to(imgWrappers[i + 1], { width: "95%", duration: 3, ease: "power2.inOut" }, "<")
           .to(imgWrappers[i], { width: "0%", opacity: 0, duration: 1.5, ease: "power2.inOut" })
           .to(imgWrappers[i + 2], { width: "10%", opacity: 1, duration: 1.5, ease: "power2.inOut" }, "<");
       }
@@ -64,8 +64,8 @@ const AdvancedScrollCarousel: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="bg-brand-off-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
-      <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative">
+    <section ref={containerRef} className="bg-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <motion.span 
           animate={{ rotate: 360 }}

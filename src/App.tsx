@@ -15,10 +15,12 @@ import { IndustryPartners } from './components/sections/IndustryPartners';
 import { Testimonials } from './components/sections/Testimonials';
 import { Blogs } from './components/sections/Blogs';
 import { FeaturedBrands } from './components/sections/FeaturedBrands';
+import { SupportingOrganization } from './components/sections/SupportingOrganization';
 import { Footer } from './components/sections/Footer';
 
 import { CustomCursor } from './components/layout/CustomCursor';
 import { MenuOverlay } from './components/layout/MenuOverlay';
+import { GlobalNavbar } from './components/layout/GlobalNavbar';
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
@@ -31,28 +33,40 @@ export default function App() {
   return (
     <SmoothScroll>
       <CustomCursor />
+      <GlobalNavbar 
+        isOpen={isMenuOpen} 
+        onOpenMenu={() => setIsMenuOpen(true)} 
+        onCloseMenu={() => setIsMenuOpen(false)} 
+      />
       <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <main className="relative min-h-screen">
-        {/* Hero & About stacking reveal */}
-        <HeroAboutReveal onOpenMenu={() => setIsMenuOpen(true)} />
+      
+      <main className="relative">
+        <div className="relative z-20 bg-white shadow-2xl">
+          {/* Hero & About stacking reveal */}
+          <HeroAboutReveal onOpenMenu={() => setIsMenuOpen(true)} />
 
-        <Advantage />
-        <Highlights />
-        <LatestUpdates />
-        <AdvancedScrollCarousel />
+          <Advantage />
+          <Highlights />
+          <LatestUpdates />
+          <AdvancedScrollCarousel />
 
-        <FeaturedBrands />
-        <ExhibitorProfile />
-        <RegistrationCTA />
+          <FeaturedBrands />
+          <ExhibitorProfile />
+          <RegistrationCTA />
+          <SupportingOrganization />
 
-        {/* Stacking Sections: IndustryPartners freezes, Testimonials slides over */}
-        <StackingReveal />
+          {/* Stacking Sections: IndustryPartners freezes, Testimonials slides over */}
+          <StackingReveal />
 
-        <div className="relative z-30 bg-white">
-          <Blogs />
+          <div className="relative z-30 bg-white">
+            <Blogs />
+          </div>
         </div>
 
-        <Footer />
+        {/* Sticky Reveal Footer like jaeco.fr */}
+        <div className="sticky bottom-0 z-10">
+          <Footer />
+        </div>
       </main>
     </SmoothScroll>
   );

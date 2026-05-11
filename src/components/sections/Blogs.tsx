@@ -35,7 +35,7 @@ export function Blogs() {
 
   return (
     <section ref={sectionRef} className=" bg-white font-sans overflow-hidden">
-      <div className="w-[90%] mx-auto border-x border-[#ABD14F] flex flex-col">
+      <div className="w-[95%] mx-auto border-x border-[#ABD14F] flex flex-col">
         {/* Row 1: Massive Title */}
         <div className="border-b border-t border-[#ABD14F] overflow-hidden text-center mt-28">
           <motion.h2

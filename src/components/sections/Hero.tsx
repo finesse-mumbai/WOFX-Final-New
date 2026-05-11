@@ -27,7 +27,7 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="relative z-10 w-[90%] mx-auto h-full border-x-2 border-[#AAD24E]">
+      <div className="relative z-10 w-[95%] mx-auto h-full border-x border-[#AAD24E]">
         {/* Top Navigation Bar */}
         <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-end p-6 md:p-10 pointer-events-none">
           <div className="flex items-center space-x-6 pointer-events-auto">
@@ -64,34 +64,6 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
           </motion.div>
         </div>
 
-        {/* Bottom Nav Bar */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-full max-w-2xl px-6">
-          <div className="bg-zinc-900 p-4 md:px-10 flex items-center justify-between rounded-none shadow-2xl">
-              {/* Logo Section */}
-              <div className="flex-1 flex justify-start">
-                <img 
-                  src="https://www.wofxworldexpo.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwofx_logo_2026.e921b720.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4" 
-                  alt="WOFX Logo" 
-                  className="h-14 w-auto object-contain"
-                />
-              </div>
-
-              {/* Center Section */}
-              <div className="flex-1 flex justify-center">
-                <span className="hidden md:block font-black tracking-[0.3em] text-sm hover:text-brand-yellow transition-colors cursor-pointer">HOME</span>
-              </div>
-
-              {/* Menu Section */}
-              <div className="flex-1 flex justify-end space-x-12">
-                <button 
-                  onClick={onOpenMenu}
-                  className="text-brand-light-lime hover:scale-110 transition-transform cursor-pointer"
-                >
-                  <Menu size={32} />
-                </button>
-              </div>
-          </div>
-        </div>
       </div>
     </section>
   );

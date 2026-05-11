@@ -132,10 +132,10 @@ export function ExhibitorProfile() {
     <section ref={zoomContainerRef} className=" bg-[#AAD24E] overflow-hidden relative">
       {/* Persistent Side Borders Overlay */}
       <div className="absolute inset-0 z-[90] pointer-events-none">
-        <div className="w-[90%] h-full mx-auto border-x border-black/20" />
+        <div className="w-[95%] h-full mx-auto border-x border-black/20" />
       </div>
 
-      <div className="w-[90%] mx-auto relative flex flex-col items-center min-h-screen">
+      <div className="w-[95%] mx-auto relative flex flex-col items-center min-h-screen">
 
         <div ref={orbitRef} className="relative w-full max-w-[1248px] aspect-square flex items-center justify-center">
           {/* Inner Circle (Zoom Reveal) */}

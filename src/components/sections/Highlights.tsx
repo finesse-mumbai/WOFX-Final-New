@@ -67,7 +67,7 @@ export function Highlights() {
   return (
     <section ref={sectionRef} className="bg-black relative ">
       {/* Top Black Section with 2025 */}
-      <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative z-20 ">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative z-20 ">
         <div className="relative h-[165px] md:h-[255px] flex items-center justify-center">
           <div className="flex mt-20 pt-12">
             <div className="h-[165px] md:h-[255px] overflow-hidden">

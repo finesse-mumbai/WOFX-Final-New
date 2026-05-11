@@ -47,8 +47,8 @@ export function LatestUpdates() {
 
   return (
     <section className="w-full bg-[#6CCAD4]">
-      {/* 90% Width Container with Borders */}
-      <div className="w-[90%] mx-auto border-x-2 border-[#A9D24E] min-h-[600px] flex items-stretch">
+      {/* 95% Width Container with Borders */}
+      <div className="w-[95%] mx-auto border-x border-[#A9D24E] min-h-[600px] flex items-stretch">
         <div className="flex flex-col lg:flex-row w-full gap-0 py-28">
 
           {/* Left Column (50%) */}

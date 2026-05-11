@@ -9,23 +9,21 @@ const logoFilenames = [
   "51.png", "52.png", "53.png", "53a.png", "61.png", "54.png", "Logo-wofx-201.png", "55.png", "56.png", "57.png", "58.png", "59.png", "60.png", "66.png"
 ];
 
-export function FeaturedBrands() {
+export function SupportingOrganization() {
   return (
-    <section className="py-20 bg-gradient-to-r from-brand-purple via-brand-magenta to-brand-purple border-b border-white/10 text-white">
+    <section className="py-20 bg-white text-[#111111] relative overflow-hidden">
 
       <div className="text-center">
-        <p className=" text-3xl">Brand Connect <span className="font-semibold text-[#ABD14F]">@WOFX</span></p>
-
+        <p className="text-3xl font-normal tracking-tight">Supporting <span className="font-semibold text-[#ABD14F]">Organization</span></p>
       </div>
 
       <div className="relative flex overflow-x-hidden group mt-10">
-
         <div className="py-12 animate-marquee whitespace-nowrap flex items-center">
           {logoFilenames.map((filename, index) => (
             <div key={index} className="mx-12 w-[240px] bg-white h-[140px] relative transition-all duration-500 hover:scale-110 flex items-center justify-center p-6">
               <img
                 src={`https://www.wofxworldexpo.com/assests/countyLogo/2026/${filename}`}
-                alt={`Brand ${filename}`}
+                alt={`Organization ${filename}`}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -38,7 +36,7 @@ export function FeaturedBrands() {
             <div key={`copy-${index}`} className="mx-12 w-[240px] bg-white h-[140px] relative transition-all duration-500 hover:scale-110 flex items-center justify-center p-6">
               <img
                 src={`https://www.wofxworldexpo.com/assests/countyLogo/2026/${filename}`}
-                alt={`Brand ${filename}`}
+                alt={`Organization ${filename}`}
                 className="w-full h-full object-contain"
               />
             </div>

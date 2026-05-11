@@ -10,12 +10,12 @@ export function About() {
     offset: ["start end", "center center"]
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 0.8], ["-120%", "0%"]);
+  const titleY = useTransform(scrollYProgress, [0, 0.8], ["120%", "0%"]);
   const smoothTitleY = useSpring(titleY, { stiffness: 60, damping: 20, mass: 0.4 });
 
   return (
-    <section ref={sectionRef} className="bg-brand-off-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
-      <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] relative">
+    <section ref={sectionRef} className="bg-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
         <span className="absolute -top-3 -right-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
@@ -87,7 +87,7 @@ export function Stats() {
 
   return (
     <section ref={ref} className="bg-brand-lime">
-      <div className="w-[90%] mx-auto border-x-2 border-[#AAD24E] py-16 px-6 md:px-20 overflow-hidden">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] py-16 px-6 md:px-20 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="flex flex-col">
