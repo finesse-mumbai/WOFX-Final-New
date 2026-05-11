@@ -102,8 +102,8 @@ const AdvancedScrollCarousel: React.FC = () => {
         </div>
 
         {/* Carousel Animation Stage */}
-        <div ref={triggerRef} className="relative h-[65vh] w-full flex items-center justify-center p-4 md:p-8">
-          <div className="relative w-full h-full flex gap-4 md:gap-6 overflow-hidden items-center rounded-sm">
+        <div ref={triggerRef} className="relative h-[65vh] w-full flex items-center justify-center py-4 md:py-8">
+          <div className="relative w-full h-full flex gap-4 md:gap-6 overflow-hidden items-center">
             {images.map((src, i) => (
               <div key={i} className="img-wrapper relative h-full shrink-0 overflow-hidden rounded-none border-0 last:border-0 will-change-[width,opacity]">
                 <img src={src} className="w-full h-full object-cover brightness-90 grayscale-[20%] hover:grayscale-0 hover:brightness-100 transition-all duration-1000" alt="" />

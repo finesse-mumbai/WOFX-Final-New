@@ -70,10 +70,10 @@ export function Highlights() {
       <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative z-40 ">
         <div className="relative h-[165px] md:h-[255px] flex items-center justify-center">
           <div className="flex mt-20 pt-12">
-            <div className="h-[165px] md:h-[255px] z-50 relative overflow-hidden">
+            <div className="h-[165px] md:h-[255px] z-30 relative overflow-hidden">
               <motion.h2
                 style={{ y: smoothTitleY }}
-                className="text-[12rem] md:text-[24rem] z-50 font-black text-white leading-none tracking-tighter select-none "
+                className="text-[12rem] md:text-[24rem] z-30 font-black text-white leading-none tracking-tighter select-none "
               >
                 20
               </motion.h2>
@@ -96,10 +96,10 @@ export function Highlights() {
         <div className="w-full relative pt-12 pb-24 px-4 md:px-10">
           {/* Background Watermark */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-36">
-            <span className="text-[20rem] md:text-[15rem] font-black text-[#A3BF3B] select-none">Highlights</span>
+            <span className="text-[20rem] md:text-[15rem] z-30 font-black text-[#A3BF3B] select-none">Highlights</span>
           </div>
 
-          <div className="w-full relative z-10 mt-14">
+          <div className="w-full relative z-40 mt-14">
             <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 md:gap-16">
               {/* Label */}
               <div className="flex-shrink-0 pt-2">
@@ -107,7 +107,7 @@ export function Highlights() {
               </div>
 
               {/* Stats Grid */}
-              <div className="flex-1 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-6 xl:gap-12 w-full">
+              <div className="flex-1 grid grid-cols-2 z-50 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-6 xl:gap-12 w-full">
                 {stats.map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -115,7 +115,7 @@ export function Highlights() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1, duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="flex flex-col border-l-2 border-[#FCF640] pl-4 md:pl-6 xl:pl-10"
+                    className="flex flex-col border-l-2 border-[#FCF640] -50 pl-4 md:pl-6 xl:pl-10"
                   >
                     <span className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl font-black text-white leading-none mb-4">
                       <RollingCounter value={stat.value} suffix={stat.suffix} format={stat.format} />
