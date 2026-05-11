@@ -238,9 +238,12 @@ export function Advantage() {
           <div className="w-full md:w-[30%] flex-shrink-0 border-r border-[#AAD24E]/30 flex flex-col relative p-1 min-h-[500px]">
             {/* Image container */}
             <div className="w-full h-full z-30 relative group">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
-                alt="Networking"
+              <video
+                src="/assets/IMG_1800.MP4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-[705px] z-30 absolute top-10 object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               {/* Overlay Content */}
