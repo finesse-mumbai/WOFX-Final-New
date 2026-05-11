@@ -292,14 +292,14 @@ function Card({ item, idx }: { item: any; idx: number }) {
       viewport={{ once: true }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative border p-10 z-40 flex flex-col items-start overflow-hidden h-44 cursor-pointer transition-colors duration-500"
+      className="group relative border p-10 z-50 flex flex-col items-start overflow-hidden h-44 cursor-pointer transition-colors duration-500"
       style={{ borderColor: isHovered ? 'transparent' : '#AAD24E' }}
     >
       {/* Base Background (Always visible at bottom) */}
       <div className="absolute inset-0 bg-white z-0" />
 
       {/* --- LAYER 1: Bottom Content (Black Text on White) --- */}
-      <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
+      <div className="relative z-50 w-full h-full flex flex-col pointer-events-none">
         {/* Icon */}
         <div className="mb-8 text-[#AAD24E]">
           <item.icon isHovered={isHovered} />
@@ -321,16 +321,16 @@ function Card({ item, idx }: { item: any; idx: number }) {
         initial={{ clipPath: 'inset(0 100% 0 0)' }}
         animate={{ clipPath: isHovered ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)' }}
         transition={revealTransition}
-        className="absolute inset-0 z-20 overflow-hidden pointer-events-none bg-black p-10 flex flex-col"
+        className="absolute inset-0 z-50 overflow-hidden pointer-events-none bg-black p-10 flex flex-col"
       >
         <div className="mb-8 text-[#AAD24E]">
           <item.icon isHovered={isHovered} />
         </div>
         <div className="mt-auto">
-          <h5 className="text-2xl font-black text-[#AAD24E] tracking-tight mb-2">
+          <h5 className="text-2xl font-black text-[#AAD24E] z-50 tracking-tight mb-2">
             {item.title}
           </h5>
-          <p className="text-sm font-medium leading-snug text-white/70">
+          <p className="text-sm font-medium leading-snug z-50 text-white/70">
             {item.subtitle}
           </p>
         </div>

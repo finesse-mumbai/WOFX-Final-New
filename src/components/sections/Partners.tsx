@@ -68,7 +68,10 @@ export function RegistrationCTA() {
 
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: '#AAD24E' }}>
+    <section 
+      onMouseEnter={() => window.dispatchEvent(new CustomEvent('setCursorType', { detail: 'logo-hover' }))}
+      onMouseLeave={() => window.dispatchEvent(new CustomEvent('setCursorType', { detail: 'default' }))}
+      className="relative overflow-hidden min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: '#AAD24E' }}>
 
       {/* Floating Logo Bubbles Container */}
       <div className="absolute inset-0 overflow-hidden z-40 w-full pointer-events-none">

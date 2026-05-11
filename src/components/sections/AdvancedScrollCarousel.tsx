@@ -41,21 +41,22 @@ const AdvancedScrollCarousel: React.FC = () => {
           scrub: 2.5,
           pin: true,
           onUpdate: (self) => {
-            setActiveIndex(Math.floor(self.progress * (images.length - 1)));
+            setActiveIndex(Math.floor(self.progress * (images.length - 3)) + 1);
           }
         }
       });
 
-      // CHAIN LOGIC (Left Shrinks, Right Grows)
+      // THREE-IMAGE WINDOW LOGIC (25% | 50% | 25%)
       gsap.set(imgWrappers, { width: "0%", opacity: 0 });
-      gsap.set(imgWrappers[0], { width: "95%", opacity: 1 });
-      gsap.set(imgWrappers[1], { width: "10%", opacity: 1 });
+      gsap.set(imgWrappers[0], { width: "25%", opacity: 1 });
+      gsap.set(imgWrappers[1], { width: "50%", opacity: 1 });
+      gsap.set(imgWrappers[2], { width: "25%", opacity: 1 });
 
-      for (let i = 0; i < images.length - 1; i++) {
-        tl.to(imgWrappers[i], { width: "10%", duration: 3, ease: "power2.inOut" })
-          .to(imgWrappers[i + 1], { width: "95%", duration: 3, ease: "power2.inOut" }, "<")
-          .to(imgWrappers[i], { width: "0%", opacity: 0, duration: 1.5, ease: "power2.inOut" })
-          .to(imgWrappers[i + 2], { width: "10%", opacity: 1, duration: 1.5, ease: "power2.inOut" }, "<");
+      for (let i = 0; i < images.length - 3; i++) {
+        tl.to(imgWrappers[i], { width: "0%", opacity: 0, duration: 3, ease: "power2.inOut" })
+          .to(imgWrappers[i + 1], { width: "25%", duration: 3, ease: "power2.inOut" }, "<")
+          .to(imgWrappers[i + 2], { width: "50%", duration: 3, ease: "power2.inOut" }, "<")
+          .to(imgWrappers[i + 3], { width: "25%", opacity: 1, duration: 3, ease: "power2.inOut" }, "<");
       }
 
     }, containerRef);
@@ -101,10 +102,10 @@ const AdvancedScrollCarousel: React.FC = () => {
         </div>
 
         {/* Carousel Animation Stage */}
-        <div ref={triggerRef} className="relative h-[85vh] w-full flex items-center justify-center p-4 md:p-8">
-          <div className="relative w-full h-full flex gap-1 md:gap-2 overflow-hidden items-center rounded-sm">
+        <div ref={triggerRef} className="relative h-[65vh] w-full flex items-center justify-center p-4 md:p-8">
+          <div className="relative w-full h-full flex gap-4 md:gap-6 overflow-hidden items-center rounded-sm">
             {images.map((src, i) => (
-              <div key={i} className="img-wrapper relative h-full shrink-0 overflow-hidden rounded-none border-r border-[#AAD24E]/10 last:border-0 will-change-[width,opacity]">
+              <div key={i} className="img-wrapper relative h-full shrink-0 overflow-hidden rounded-none border-0 last:border-0 will-change-[width,opacity]">
                 <img src={src} className="w-full h-full object-cover brightness-90 grayscale-[20%] hover:grayscale-0 hover:brightness-100 transition-all duration-1000" alt="" />
 
                 <div className="absolute inset-0  flex flex-col justify-between pointer-events-none">
