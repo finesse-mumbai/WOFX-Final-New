@@ -67,13 +67,13 @@ export function Highlights() {
   return (
     <section ref={sectionRef} className="bg-black relative ">
       {/* Top Black Section with 2025 */}
-      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative z-20 ">
+      <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative z-40 ">
         <div className="relative h-[165px] md:h-[255px] flex items-center justify-center">
           <div className="flex mt-20 pt-12">
-            <div className="h-[165px] md:h-[255px] overflow-hidden">
+            <div className="h-[165px] md:h-[255px] z-50 relative overflow-hidden">
               <motion.h2
                 style={{ y: smoothTitleY }}
-                className="text-[12rem] md:text-[24rem] font-black text-white leading-none tracking-tighter select-none "
+                className="text-[12rem] md:text-[24rem] z-50 font-black text-white leading-none tracking-tighter select-none "
               >
                 20
               </motion.h2>

@@ -226,7 +226,7 @@ const advantages = [
 
 export function Advantage() {
   return (
-    <section className="bg-white text-zinc-900 relative overflow-hidden z-40">
+    <section className="bg-white text-zinc-900 relative z-30">
       <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
         {/* Intersection Markers */}
         <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
@@ -235,17 +235,17 @@ export function Advantage() {
         {/* Three Column Content Section */}
         <div className="flex flex-col md:flex-row relative">
           {/* Column 1: Image (30%) */}
-          <div className="w-full md:w-[30%] flex-shrink-0 border-r border-[#AAD24E]/30 flex flex-col relative p-2 min-h-[500px]">
+          <div className="w-full md:w-[30%] flex-shrink-0 border-r border-[#AAD24E]/30 flex flex-col relative p-1 min-h-[500px]">
             {/* Image container */}
-            <div className="w-full h-full bg-zinc-200 overflow-hidden relative group">
+            <div className="w-full h-full z-30 relative group">
               <img
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
                 alt="Networking"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-[705px] z-30 absolute top-10 object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               {/* Overlay Content */}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-              <div className="absolute top-12 left-8 md:top-20 md:left-12 max-w-[200px]">
+              <div className="absolute inset-0 transition-colors duration-500 z-40" />
+              <div className="absolute top-12 left-8 md:top-20 md:left-12 max-w-[200px] z-50">
                 <h4 className="text-[#AAD24E] text-3xl md:text-4xl font-black uppercase leading-tight mb-2">Network</h4>
                 <p className="text-white/80 text-lg md:text-xl font-medium leading-tight">with Stakeholders Industry</p>
               </div>

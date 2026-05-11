@@ -85,9 +85,9 @@ export function Footer() {
             </div>
 
             {/* Address Header Area */}
-            <div className="relative p-10 flex flex-col justify-between overflow-hidden">
-              <div className="max-w-[320px] relative z-10">
-                <p className="text-[14px] font-normal text-white leading-relaxed">
+            <div className="relative p-10 flex flex-col justify-between">
+              <div className="max-w-[400px] relative z-10 pt-2">
+                <p className="text-[15px] font-normal text-white/90 leading-relaxed">
                   309, Parvati Premises, Sun Mill Complex,<br />
                   Lower Parel (W), Mumbai – 400 013, India
                 </p>

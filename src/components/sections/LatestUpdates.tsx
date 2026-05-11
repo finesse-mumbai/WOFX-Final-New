@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const updatesData = {
@@ -29,9 +29,18 @@ const updatesData = {
 
 type ActiveTab = keyof typeof updatesData;
 
+const transitionLayers = [
+  '#78C5CE',
+  '#BF457E',
+  '#5F3073',
+  '#F2E641'
+];
+
 export function LatestUpdates() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('latest_updates');
   const tabs: ActiveTab[] = ['publications', 'latest_updates', 'highlights'];
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   const handlePrev = () => {
     const currentIndex = tabs.indexOf(activeTab);
@@ -46,7 +55,24 @@ export function LatestUpdates() {
   };
 
   return (
-    <section className="w-full bg-[#6CCAD4]">
+    <section ref={sectionRef} className="w-full bg-[#6CCAD4] relative overflow-hidden">
+      {/* CURTAIN TRANSITION LAYERS */}
+      <div className="absolute inset-0 z-50 pointer-events-none">
+        {transitionLayers.map((color, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: '100%' }}
+            animate={isInView ? { y: '-100%' } : { y: '100%' }}
+            transition={{ 
+              duration: 1.5, 
+              ease: [0.645, 0.045, 0.355, 1], 
+              delay: [0.52, 0.33, 0.2, 0][i] 
+            }}
+            style={{ backgroundColor: color }}
+            className="absolute inset-0 w-full h-full"
+          />
+        ))}
+      </div>
       {/* 95% Width Container with Borders */}
       <div className="w-[95%] mx-auto border-x border-[#A9D24E] min-h-[600px] flex items-stretch">
         <div className="flex flex-col lg:flex-row w-full gap-0 py-28">
@@ -111,9 +137,6 @@ export function LatestUpdates() {
                     <h2 className="text-xl md:text-3xl font-semibold text-[#111111] tracking-tighter mb-4 leading-tight">
                       {updatesData[activeTab].title}
                     </h2>
-                    {/* <p className="text-lg md:text-xl text-zinc-600 font-normal leading-relaxed mb-10 max-w-2xl">
-                      {updatesData[activeTab].description}
-                    </p> */}
 
                     {/* Navigation Buttons */}
                     <div className="flex items-center gap-4 mt-auto">

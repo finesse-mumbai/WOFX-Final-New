@@ -10,18 +10,15 @@ export function CustomCursor() {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-brand-magenta pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-brand-magenta pointer-events-none z-[9999] mix-blend-difference"
         animate={{ x: mousePosition.x - 16, y: mousePosition.y - 16 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 250, mass: 0.5 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200, mass: 0.5 }}
       />
       <motion.div
         className="fixed top-0 left-0 w-2 h-2 rounded-full bg-brand-magenta pointer-events-none z-[9999]"
