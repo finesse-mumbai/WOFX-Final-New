@@ -37,8 +37,8 @@ export function IndustryPartners() {
       {/* Background Watermark */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 px-4">
         <h2 className="text-[18vw] font-black tracking-tighter leading-[0.8] text-[#EFEFEF] whitespace-nowrap w-full flex flex-col">
-          <span className="block text-left">INDUSTRY</span>
-          <span className="block text-right">BODIES</span>
+          <span className="block text-left">Industry</span>
+          <span className="block text-right">Bodies</span>
         </h2>
       </div>
 
@@ -51,7 +51,7 @@ export function IndustryPartners() {
       </div>
 
       {/* Grid Container */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -59,12 +59,12 @@ export function IndustryPartners() {
         className="relative z-10 w-full h-screen md:translate-x-[20%]"
       >
         <div className="grid grid-cols-3 grid-rows-3 aspect-square h-full w-auto gap-0 mx-auto">
-          
+
           {/* Row 1 */}
           <div /> {/* 1,1 */}
           <div className="overflow-hidden w-full h-full">
-            <PartnerCard 
-              partner={partners[0]} 
+            <PartnerCard
+              partner={partners[0]}
               direction="up"
             />
           </div>
@@ -72,15 +72,15 @@ export function IndustryPartners() {
 
           {/* Row 2 */}
           <div className="overflow-hidden w-full h-full">
-            <PartnerCard 
-              partner={partners[1]} 
+            <PartnerCard
+              partner={partners[1]}
               direction="left"
             />
           </div>
           <CenterElement />
           <div className="overflow-hidden w-full h-full">
-            <PartnerCard 
-              partner={partners[2]} 
+            <PartnerCard
+              partner={partners[2]}
               direction="right"
             />
           </div>
@@ -88,13 +88,13 @@ export function IndustryPartners() {
           {/* Row 3 */}
           <div /> {/* 3,1 */}
           <div className="overflow-hidden w-full h-full">
-            <PartnerCard 
-              partner={partners[3]} 
+            <PartnerCard
+              partner={partners[3]}
               direction="down"
             />
           </div>
           <div /> {/* 3,3 */}
-          
+
         </div>
       </motion.div>
     </section>
@@ -117,7 +117,7 @@ function CenterElement() {
         }}
         className="absolute w-full h-full bg-[#AAD24E]/10 blur-xl"
       />
-      
+
       {/* Main Glass Square */}
       <div className="relative w-full h-full bg-white/40 backdrop-blur-md z-10" />
     </div>
@@ -126,7 +126,7 @@ function CenterElement() {
 
 function PartnerCard({ partner, direction }: { partner: any; direction: 'up' | 'down' | 'left' | 'right' }) {
   const getInitialPos = () => {
-    switch(direction) {
+    switch (direction) {
       case 'up': return { y: '100%', x: 0 };
       case 'down': return { y: '-100%', x: 0 };
       case 'left': return { x: '100%', y: 0 };
@@ -136,18 +136,18 @@ function PartnerCard({ partner, direction }: { partner: any; direction: 'up' | '
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.6, 
+    hidden: {
+      opacity: 0,
+      scale: 0.6,
       filter: 'blur(10px)',
       rotate: direction === 'up' || direction === 'right' ? -5 : 5,
       ...getInitialPos()
     },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      x: 0, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      y: 0,
       filter: 'blur(0px)',
       rotate: 0,
       transition: {
@@ -160,7 +160,7 @@ function PartnerCard({ partner, direction }: { partner: any; direction: 'up' | '
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ 
+      whileHover={{
         scale: 1.05,
         backgroundColor: "#ffffff",
         zIndex: 30,

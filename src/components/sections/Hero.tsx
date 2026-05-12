@@ -8,7 +8,7 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
 
   useEffect(() => {
     if (h1Ref.current) {
-      gsap.fromTo(h1Ref.current, 
+      gsap.fromTo(h1Ref.current,
         { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
         { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1.5, ease: 'power4.out', delay: 0.5 }
       );
@@ -19,9 +19,12 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
     <section className="relative h-screen w-full overflow-hidden bg-zinc-900 text-white font-sans">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2822&auto=format&fit=crop" 
-          alt="Modern interior design"
+        <video
+          src="/assets/WOFX-Short-Video-2025 (1).mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-full w-full object-cover opacity-60 scale-105"
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -38,7 +41,7 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
             <button className="bg-brand-yellow text-black font-black px-8 py-3 rounded-none hover:bg-white transition-all uppercase text-sm cursor-pointer shadow-lg border-none outline-none">
               Login
             </button>
-            <div className="flex space-x-8 text-[11px] font-bold tracking-[0.2em] uppercase">
+            <div className="flex space-x-8 text-[11px] font-bold tracking-[0.2em]">
               <a href="#" className="text-brand-yellow hover:white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-brand-yellow">Exhibitor</a>
               <a href="#" className="text-brand-yellow hover:white transition-colors">Buyer</a>
             </div>
@@ -53,7 +56,7 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full text-left"
           >
-            <h1 ref={h1Ref} className="text-4xl md:text-8xl font-black leading-[0.9] tracking-tight mb-4 text-white">
+            <h1 ref={h1Ref} className="text-4xl md:text-8xl font-black font-sans leading-[1.1] tracking-tight mb-4 text-white">
               The Global <br />
               Marketplace <br />
               Crafted Of,

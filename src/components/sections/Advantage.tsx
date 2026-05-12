@@ -228,9 +228,6 @@ export function Advantage() {
   return (
     <section className="bg-white text-zinc-900 relative z-30">
       <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
-        {/* Intersection Markers */}
-        <span className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
-        <span className="absolute -top-3 -right-[11px] text-[#AAD24E] text-xl font-bold select-none">+</span>
 
         {/* Three Column Content Section */}
         <div className="flex flex-col md:flex-row relative">
@@ -254,7 +251,7 @@ export function Advantage() {
               </div>
             </div>
 
-            <span className="absolute bottom-0 -left-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none">+</span>
+
           </div>
 
           {/* Column 2: Spacer (w-14) */}
@@ -296,7 +293,7 @@ function Card({ item, idx }: { item: any; idx: number }) {
       style={{ borderColor: isHovered ? 'transparent' : '#AAD24E' }}
     >
       {/* Base Background (Always visible at bottom) */}
-      <div className="absolute inset-0 bg-white z-0" />
+      <div className="absolute  inset-0 bg-[#EFEFEF] z-0" />
 
       {/* --- LAYER 1: Bottom Content (Black Text on White) --- */}
       <div className="relative z-50 w-full h-full flex flex-col pointer-events-none">

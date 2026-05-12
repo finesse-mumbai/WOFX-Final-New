@@ -68,7 +68,7 @@ export function RegistrationCTA() {
 
 
   return (
-    <section 
+    <section
       onMouseEnter={() => window.dispatchEvent(new CustomEvent('setCursorType', { detail: 'logo-hover' }))}
       onMouseLeave={() => window.dispatchEvent(new CustomEvent('setCursorType', { detail: 'default' }))}
       className="relative overflow-hidden min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: '#AAD24E' }}>
@@ -103,10 +103,10 @@ export function RegistrationCTA() {
 
       {/* Watermark */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-        <h2 className="text-[10vw] font-black tracking-tighter leading-[0.8] text-white text-center whitespace-nowrap">
-          <span className="block">BUYER</span>
-          <span className="block">REGISTRATION</span>
-          <span className="block">FORM</span>
+        <h2 className="text-[12vw] font-black tracking-tighter leading-[1.0] text-white text-center whitespace-nowrap">
+          <span className="block">Buyer</span>
+          <span className="block">Registration</span>
+          <span className="block">Form</span>
         </h2>
       </div>
 
@@ -179,7 +179,7 @@ export function RegistrationCTA() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6 + idx * 0.1, duration: 0.8, ease: "easeOut" }}
-                      className="text-black border-b py-3 border-black/10 font-semibold text-2xl text-left md:text-2xl leading-[0.95] uppercase tracking-tighter"
+                      className="text-black border-b py-3 border-black/10 font-semibold text-2xl text-left md:text-2xl leading-[0.95]  tracking-tighter"
                     >
                       {item}
                     </motion.span>
@@ -200,7 +200,7 @@ export function RegistrationCTA() {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="mt-2 group flex w-[400px] items-center justify-around  bg-white text-black py-4 px-8 rounded-full text-3xl font-bold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-3xl"
           >
-            <span>Registry Now</span>
+            <span>Register Now</span>
             <div className=" p-2 rounded-full text-black transition-transform group-hover:translate-x-2">
               <MoveRight size={28} strokeWidth={2} />
             </div>

@@ -68,16 +68,7 @@ const AdvancedScrollCarousel: React.FC = () => {
     <section ref={containerRef} className="bg-white text-zinc-900 border-t border-[#AAD24E]/30 relative overflow-hidden">
       <div className="w-[95%] mx-auto border-x border-[#AAD24E] relative">
         {/* Intersection Markers */}
-        <motion.span 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-3 -left-[11px] text-[#AAD24E] text-xl font-bold select-none"
-        >+</motion.span>
-        <motion.span 
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-3 -right-[11px] text-[#AAD24E] text-xl font-bold select-none"
-        >+</motion.span>
+
 
         {/* Big Centered Heading */}
 
@@ -89,21 +80,12 @@ const AdvancedScrollCarousel: React.FC = () => {
             in Furniture & Design
           </h1>
           {/* Internal Markers */}
-          <motion.span 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-0 -left-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none"
-          >+</motion.span>
-          <motion.span 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-0 -right-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none"
-          >+</motion.span>
+
         </div>
 
         {/* Carousel Animation Stage */}
-        <div ref={triggerRef} className="relative h-[65vh] w-full flex items-center justify-center py-4 md:py-8">
-          <div className="relative w-full h-full flex gap-4 md:gap-6 overflow-hidden items-center">
+        <div ref={triggerRef} className="relative h-screen w-full flex items-center justify-center">
+          <div className="relative w-full h-[65vh] flex gap-4 md:gap-6 overflow-hidden items-center">
             {images.map((src, i) => (
               <div key={i} className="img-wrapper relative h-full shrink-0 overflow-hidden rounded-none border-0 last:border-0 will-change-[width,opacity]">
                 <img src={src} className="w-full h-full object-cover brightness-90 grayscale-[20%] hover:grayscale-0 hover:brightness-100 transition-all duration-1000" alt="" />
@@ -133,16 +115,7 @@ const AdvancedScrollCarousel: React.FC = () => {
           </div>
 
           {/* Bottom Markers */}
-          <motion.span 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-0 -left-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none"
-          >+</motion.span>
-          <motion.span 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-0 -right-[11px] translate-y-1/2 text-[#AAD24E] text-xl font-bold select-none pointer-events-none"
-          >+</motion.span>
+
         </div>
       </div>
     </section>

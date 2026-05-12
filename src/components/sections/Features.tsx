@@ -7,14 +7,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
   // Inner Orbit (3 items)
-  { name: 'Home & Living', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F1.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
-  { name: 'Work Space', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F2.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
-  { name: 'Institutional', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F3.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
+  { name: 'Home & Living', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F1.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
+  { name: 'Work Space', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F2.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
+  { name: 'Institutional', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F3.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
   // Outer Orbit (4 items)
-  { name: 'Kitchen & Wardrobe', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F4.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
-  { name: 'Outdoor', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F5.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
-  { name: 'Industry Partner', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F7.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4' },
-  { name: 'Global Connect', image: 'https://www.wofxworldexpo.com/_next/static/media/industryPartner.607b89a5.png' },
+  { name: 'Kitchen & Wardrobe', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F4.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
+  { name: 'Outdoor', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F5.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
+  { name: 'Global Connect', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F6.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
+  { name: 'Global Connect', image: 'https://www.wofxworldexpo.com/_next/image?url=%2Fassests%2FexhibitorProfile%2FexhibitorProfile-2026%2F7.png&w=256&q=75&dpl=dpl_2MwLgQh5aqzmMATNjbekfkk9N1X2' },
 ];
 
 export function ExhibitorProfile() {

@@ -25,6 +25,15 @@
 :root {
   background-color: var(--color-brand-off-white);
   color: #1a1a1a;
+  font-family: var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
 }
 
 html.lenis {

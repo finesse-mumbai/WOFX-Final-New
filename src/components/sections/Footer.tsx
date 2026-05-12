@@ -58,16 +58,7 @@ export function Footer() {
       >
         <div className="w-[95%] mx-auto border-x border-[#ABD14F] relative">
           {/* Intersection Markers */}
-          <motion.span 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-3 -left-[11px] text-[#ABD14F] text-xl font-bold select-none"
-          >+</motion.span>
-          <motion.span 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-3 -right-[11px] text-[#ABD14F] text-xl font-bold select-none"
-          >+</motion.span>
+
 
           <div className="grid grid-cols-1 md:grid-cols-[33%_1fr] border-b border-[#ABD14F]">
             {/* Logo & Organised By */}

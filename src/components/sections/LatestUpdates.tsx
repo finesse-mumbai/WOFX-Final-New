@@ -63,10 +63,10 @@ export function LatestUpdates() {
             key={i}
             initial={{ y: '100%' }}
             animate={isInView ? { y: '-100%' } : { y: '100%' }}
-            transition={{ 
-              duration: 1.5, 
-              ease: [0.645, 0.045, 0.355, 1], 
-              delay: [0.52, 0.33, 0.2, 0][i] 
+            transition={{
+              duration: 1.5,
+              ease: [0.645, 0.045, 0.355, 1],
+              delay: [0.52, 0.33, 0.2, 0][i]
             }}
             style={{ backgroundColor: color }}
             className="absolute inset-0 w-full h-full"
@@ -78,7 +78,7 @@ export function LatestUpdates() {
         <div className="flex flex-col lg:flex-row w-full gap-0 py-28">
 
           {/* Left Column (50%) */}
-          <div className="lg:w-1/2 flex flex-col justify-center gap-0 py-20 border-r border-[#A9D24E] pl-20">
+          <div className="lg:w-1/2 flex flex-col justify-center gap-0 py-20 pl-20">
             {tabs.map((tab, idx) => (
               <motion.div
                 key={tab}

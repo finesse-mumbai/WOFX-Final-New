@@ -42,7 +42,7 @@ const navItems = [
     ],
   },
   {
-    label: "Exhibitors",
+    label: "Exhibitor",
     link: "#",
     children: [
       {
@@ -72,7 +72,7 @@ const navItems = [
     ],
   },
   {
-    label: "Buyers",
+    label: "Buyer",
     link: "#",
     children: [
       {

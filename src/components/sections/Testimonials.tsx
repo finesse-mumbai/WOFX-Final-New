@@ -118,27 +118,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         initial="initial"
         whileHover="hover"
       >
-        {/* Plus Icons Outside - Only visible on hover */}
-        <motion.div
-          variants={{
-            initial: { opacity: 0, scale: 0.5, rotate: -45 },
-            hover: { 
-              opacity: 1, 
-              scale: 1, 
-              rotate: 0,
-              transition: { 
-                duration: 0.6, 
-                ease: [0.16, 1, 0.3, 1] 
-              }
-            }
-          }}
-          className="absolute inset-0 z-30 pointer-events-none"
-        >
-          <Plus className="absolute -top-6 -left-6 text-[#ABD14F] transition-transform duration-1000 group-hover:rotate-180" size={24} />
-          <Plus className="absolute -top-6 -right-6 text-[#ABD14F] transition-transform duration-1000 group-hover:rotate-180" size={24} />
-          <Plus className="absolute -bottom-6 -left-6 text-[#ABD14F] transition-transform duration-1000 group-hover:rotate-180" size={24} />
-          <Plus className="absolute -bottom-6 -right-6 text-[#ABD14F] transition-transform duration-1000 group-hover:rotate-180" size={24} />
-        </motion.div>
+
 
         <div className="absolute inset-0 overflow-hidden">
           {/* Initial Image with Reveal Animation */}
