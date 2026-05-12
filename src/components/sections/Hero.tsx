@@ -41,7 +41,7 @@ export function Hero({ onOpenMenu }: { onOpenMenu: () => void }) {
             <button className="bg-brand-yellow text-black font-black px-8 py-3 rounded-none hover:bg-white transition-all uppercase text-sm cursor-pointer shadow-lg border-none outline-none">
               Login
             </button>
-            <div className="flex space-x-8 text-[11px] font-bold tracking-[0.2em]">
+            <div className="flex space-x-8 text-[11px] font-semibold tracking-[0.1em]">
               <a href="#" className="text-brand-yellow hover:white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-brand-yellow">Exhibitor</a>
               <a href="#" className="text-brand-yellow hover:white transition-colors">Buyer</a>
             </div>
