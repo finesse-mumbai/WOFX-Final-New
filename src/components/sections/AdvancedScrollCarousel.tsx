@@ -8,20 +8,30 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-];
-
-const labels = [
-  "Conventional", "WOFX Design", "Automated", "Traditional", "Lightweight", "Standard"
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(27).JPG",
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(19).JPG",
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(46).JPG",
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(73).JPG",
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(27).JPG",
+  "https://www.wofxworldexpo.com/assests/gallery-2024/gallery-2025/1%20(19).JPG",
 ];
 
 const titles = [
-  "Global Sourcing", "Premium Design", "Industrial Precision", "Market Insights", "Eco-Efficiency", "Structural Integrity"
+  "Focused B2B Trade Fair",
+  "Business & Networking",
+  "Global Platform",
+  "Gateway to India Market",
+  "Focused B2B Trade Fair",
+  "Business & Networking",
+];
+
+const subtitles = [
+  "A focused B2B trade show dedicated to the furniture and design industry.",
+  "Directly connect with leading industry buyers and network via business forums, seminars and awards.",
+  "Leading International and Indian brands showcasing latest collections to volume buyers.",
+  "Explore business opportunities in the high growth India market.",
+  "A focused B2B trade show dedicated to the furniture and design industry.",
+  "Directly connect with leading industry buyers and network via business forums, seminars and awards.",
 ];
 
 const AdvancedScrollCarousel: React.FC = () => {
@@ -70,22 +80,18 @@ const AdvancedScrollCarousel: React.FC = () => {
         {/* Intersection Markers */}
 
 
-        {/* Big Centered Heading */}
-
-        <div className="pt-32 pb-14 px-6 md:px-20 text-center relative">
-          <div className="text-2xl mb-5"><span className="font-bold text-[#AAD24E]">WOFX</span> Advantage</div>
-          <h1 className="text-4xl md:text-[4rem] font-black tracking-tighter leading-[1.3] max-w-6xl mx-auto">
-            Unlock a World of Opportunities<br />
-
-            in Furniture & Design
-          </h1>
-          {/* Internal Markers */}
-
-        </div>
-
         {/* Carousel Animation Stage */}
-        <div ref={triggerRef} className="relative h-screen w-full flex items-center justify-center">
-          <div className="relative w-full h-[65vh] flex gap-4 md:gap-6 overflow-hidden items-center">
+        <div ref={triggerRef} className="relative h-screen w-full flex flex-col items-center justify-center gap-6">
+          {/* Big Centered Heading (Inside Pinned Container) */}
+          <div className="pt-0 px-6 md:px-20 text-center relative">
+            <div className="text-2xl mb-3"><span className="font-bold text-[#AAD24E]">WOFX</span> Advantage</div>
+            <h1 className="text-4xl md:text-[4rem] font-black tracking-tighter leading-[1.3] max-w-6xl mx-auto">
+              Unlock a World of Opportunities<br />
+              in Furniture & Design
+            </h1>
+          </div>
+
+          <div className="relative w-full h-[55vh] flex gap-4 md:gap-6 overflow-hidden items-center">
             {images.map((src, i) => (
               <div key={i} className="img-wrapper relative h-full shrink-0 overflow-hidden rounded-none border-0 last:border-0 will-change-[width,opacity]">
                 <img src={src} className="w-full h-full object-cover brightness-90 grayscale-[20%] hover:grayscale-0 hover:brightness-100 transition-all duration-1000" alt="" />
@@ -97,7 +103,7 @@ const AdvancedScrollCarousel: React.FC = () => {
                     </span>
                     <span className="text-zinc-400 font-mono text-[10px]">0{i + 1}</span> */}
                   </div>
-                  <div className="relative p-10 pt-32 overflow-hidden">
+                  <div className="relative p-10 pt-10 overflow-hidden">
                     <div
                       className="absolute inset-0 backdrop-blur-xl bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"
                       style={{
@@ -105,9 +111,12 @@ const AdvancedScrollCarousel: React.FC = () => {
                         WebkitMaskImage: 'linear-gradient(to top, black 20%, transparent 100%)'
                       }}
                     />
-                    <h3 className="relative text-xl md:text-5xl font-semibold tracking-tighter leading-none whitespace-nowrap text-white drop-shadow-2xl z-10">
+                    <h3 className="relative text-xl md:text-3xl lg:text-5xl font-semibold tracking-tighter leading-none whitespace-normal text-white drop-shadow-2xl z-10 mb-2">
                       {titles[i]}
                     </h3>
+                    <p className="relative text-sm md:text-base text-white/80 font-medium whitespace-normal z-10">
+                      {subtitles[i]}
+                    </p>
                   </div>
                 </div>
               </div>
